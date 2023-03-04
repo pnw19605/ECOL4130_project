@@ -10,7 +10,6 @@ Water Quality data- NEON (National Ecological Observatory Network). Water qualit
 Allison Belkeir
 
 Ian Morton 
-
 Peyton White
 
 Team name: Mosquito bites
