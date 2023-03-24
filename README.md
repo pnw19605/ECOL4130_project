@@ -7,8 +7,8 @@ The data that is intended to be used for this project is centered in understandi
 
 Mosquito data- NEON (National Ecological Observatory Network). Mosquitoes sampled from CO2 traps (DP1.10043.001). https://data.neonscience.org (accessed March 2, 2023)
 Water Quality data- NEON (National Ecological Observatory Network). Water quality (DP1.20288.001). https://data.neonscience.org (accessed March 2, 2023)
-Allison Belkeir
 
+Allison Belkeir
 Ian Morton 
 Peyton White
 
