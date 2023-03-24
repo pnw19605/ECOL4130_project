@@ -1,0 +1,27 @@
+---
+title: "Neon Data Mod 3"
+author: "Allison Belkeir"
+date: "2023-03-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r loading packages}
+
+library(dplyr)
+library(tidyr)
+library(readr)
+library(lubridate)
+library(ggplot2)
+
+```
+
+```{r load data sets}
+
+Jan_2018_WQ <- read_csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-01.basic.20221211T164119Z")
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
