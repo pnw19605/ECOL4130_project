@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r loading packages}
 
 library(dplyr)
@@ -20,7 +21,57 @@ library(ggplot2)
 
 ```{r load data sets}
 
-Jan_2018_WQ <- read_csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-01.basic.20221211T164119Z")
+Jan_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-01.basic.20221211T164119Z.csv")
+Feb_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-02.basic.20221211T154942Z.csv")
+Mar_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-03.basic.20221211T164907Z.csv")
+Apr_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-04.basic.20221211T173452Z.csv")
+May_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-05.basic.20221211T154434Z.csv")
+Jun_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-06.basic.20221211T172032Z.csv")
+Jul_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-07.basic.20221211T163814Z.csv")
+Aug_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-08.basic.20221211T161305Z.csv")
+Sep_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-09.basic.20221211T173307Z.csv")
+Oct_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-10.basic.20221211T163628Z.csv")
+Nov_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-11.basic.20221211T161719Z.csv")
+Dec_2018_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-12.basic.20221211T170045Z.csv")
+
+Jan_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-01.basic.20221211T171040Z.csv")
+Feb_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-02.basic.20221211T154438Z.csv")
+Mar_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-03.basic.20221211T174515Z.csv")
+Apr_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-04.basic.20221211T160726Z.csv")
+May_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-05.basic.20221211T161346Z.csv")
+Jun_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-06.basic.20221211T154031Z.csv")
+Jul_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-07.basic.20221211T173141Z.csv")
+Aug_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-08.basic.20221211T180008Z.csv")
+Sep_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-09.basic.20221211T161826Z.csv")
+Oct_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-10.basic.20221211T163509Z.csv")
+Nov_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-11.basic.20221211T170748Z.csv")
+Dec_2019_WQ <- read.csv("NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-12.basic.20221211T172611Z.csv")
+
+Jan_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-01.basic.20221128T184700Z.csv")
+Feb_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-02.basic.20221128T162745Z.csv")
+Mar_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-03.basic.20221128T190534Z.csv")
+Apr_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-04.basic.20221128T172640Z.csv")
+May_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-05.basic.20221128T171839Z.csv")
+Jun_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-06.basic.20221128T183715Z.csv")
+Jul_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-07.basic.20221128T163521Z.csv")
+Aug_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-08.basic.20221128T182901Z.csv")
+Sep_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-09.basic.20221128T172709Z.csv")
+Oct_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-10.basic.20221128T173108Z.csv")
+Nov_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-11.basic.20221128T174938Z.csv")
+Dec_2018_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-12.basic.20221128T175440Z.csv")
+
+Jan_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-01.basic.20221128T190654Z.csv")
+Feb_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-02.basic.20221128T164754Z.csv")
+Mar_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-03.basic.20221128T170843Z.csv")
+Apr_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-04.basic.20221128T185950Z.csv")
+May_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-05.basic.20221128T165925Z.csv")
+Jun_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-06.basic.20221128T172841Z.csv")
+Jul_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-07.basic.20221128T180250Z.csv")
+Aug_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-08.basic.20221128T180505Z.csv")
+Sep_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-09.basic.20221128T163659Z.csv")
+Oct_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-10.basic.20221128T193323Z.csv")
+Nov_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-11.basic.20221128T163436Z.csv")
+Dec_2019_MC <- read.csv("NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-12.basic.20221128T191152Z.csv")
 
 ```
 
