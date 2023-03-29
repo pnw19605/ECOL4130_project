@@ -74,5 +74,21 @@ Nov_2019_MC <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Coun
 Dec_2019_MC <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-12.basic.20221128T191152Z.csv")
 
 ```
+``` {r merging files/variables}
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ)
+summary(WQ_2018)
+
+WQ_2019 <- bind_rows(Jan_2019_WQ,Feb_2019_WQ,Mar_2019_WQ,Apr_2019_WQ,May_2019_WQ,Jun_2019_WQ,Jul_2019_WQ,Aug_2019_WQ,Sep_2019_WQ,Oct_2019_WQ,Nov_2019_WQ,Dec_2019_WQ)
+summary(WQ_2019)
+
+```
+``` {r merging files/variables}
+
+MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC) 
+summary(MC_2018)
+
+MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC,Jun_2019_MC,Jul_2019_MC,Aug_2019_MC,Sep_2019_MC,Oct_2019_MC,Nov_2019_MC,Dec_2019_MC) 
+summary(MC_2019)
+
+```
