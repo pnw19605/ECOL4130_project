@@ -54,7 +54,7 @@ Feb_2018_MC <- Feb_2018_M[-30]
 Mar_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-03.basic.20221128T190534Z.csv")
 Mar_2018_MC <- Mar_2018_M[-30]
 Apr_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-04.basic.20221128T172640Z.csv")
-Apr_2108_MC <- Apr_2018_M[-30]
+Apr_2018_MC <- Apr_2018_M[-30]
 May_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-05.basic.20221128T171839Z.csv")
 May_2018_MC <- May_2018_M[-30]
 Jun_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-06.basic.20221128T183715Z.csv")
@@ -100,31 +100,22 @@ Dec_2019_MC <- Dec_2019_M[-30]
 ```
 ``` {r merging files/variables}
 
-WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ)
-
-chlorophyll_2018 <- WQ_2018 %>%
+WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ) %>%
   select(startDateTime,chlorophyll)
 
-WQ_2019 <- bind_rows(Jan_2019_WQ,Feb_2019_WQ,Mar_2019_WQ,Apr_2019_WQ,May_2019_WQ,Jun_2019_WQ,Jul_2019_WQ,Aug_2019_WQ,Sep_2019_WQ,Oct_2019_WQ,Nov_2019_WQ,Dec_2019_WQ) 
-
-chlorophyll_2019 <- WQ_2019 %>%
+WQ_2019 <- bind_rows(Jan_2019_WQ,Feb_2019_WQ,Mar_2019_WQ,Apr_2019_WQ,May_2019_WQ,Jun_2019_WQ,Jul_2019_WQ,Aug_2019_WQ,Sep_2019_WQ,Oct_2019_WQ,Nov_2019_WQ,Dec_2019_WQ) %>%
   select(startDateTime,chlorophyll)
 
-MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC)
-
-mosquito_count_2018 <- MC_2018 %>%
+MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC)%>%
   select(collectDate,individualCount)
 
-MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC,Jun_2019_MC,Jul_2019_MC,Aug_2019_MC,Sep_2019_MC,Oct_2019_MC,Nov_2019_MC,Dec_2019_MC) 
-
-mosquito_count_2019 <- MC_2019 %>%
+MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC,Jun_2019_MC,Jul_2019_MC,Aug_2019_MC,Sep_2019_MC,Oct_2019_MC,Nov_2019_MC,Dec_2019_MC) %>%
   select(collectDate,individualCount)
 
-chlorophyll_mosquito_2018 <- cross_join(chlorophyll_2018,mosquito_count_2018)
+chlorophyll_mosquito_2018 <- cross_join(WQ_2018,MC_2018)
 
-chlorophyll_mosquito_2019 <- cross_join(chlorophyll_2019,mosquito_count_2019) 
+chlorophyll_mosquito_2019 <- cross_join(WQ_2019,MC_2019) 
 
 chlorophyll_mosquito_all <- cross_join(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
-
 
 ```
