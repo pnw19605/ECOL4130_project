@@ -21,97 +21,146 @@ library(ggplot2)
 
 ```{r load data sets}
 
-Jan_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-01.basic.20221211T164119Z.csv") 
-Feb_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-02.basic.20221211T154942Z.csv")
-Mar_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-03.basic.20221211T164907Z.csv")
-Apr_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-04.basic.20221211T173452Z.csv")
-May_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-05.basic.20221211T154434Z.csv")
-Jun_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-06.basic.20221211T172032Z.csv")
-Jul_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-07.basic.20221211T163814Z.csv")
-Aug_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-08.basic.20221211T161305Z.csv")
-Sep_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-09.basic.20221211T173307Z.csv")
-Oct_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-10.basic.20221211T163628Z.csv")
-Nov_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-11.basic.20221211T161719Z.csv")
-Dec_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-12.basic.20221211T170045Z.csv")
+Jan_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-01.basic.20221211T164119Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll)) %>%
+  mutate(month=month(1,startDateTime,Jan))
+Feb_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-02.basic.20221211T154942Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Mar_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-03.basic.20221211T164907Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Apr_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-04.basic.20221211T173452Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+May_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-05.basic.20221211T154434Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Jun_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-06.basic.20221211T172032Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Jul_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-07.basic.20221211T163814Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Aug_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-08.basic.20221211T161305Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Sep_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-09.basic.20221211T173307Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Oct_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-10.basic.20221211T163628Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Nov_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-11.basic.20221211T161719Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Dec_2018_WQ <- read_csv("../Data/Raw/Water Quality Data/2018 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2018-12.basic.20221211T170045Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
 
-Jan_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-01.basic.20221211T171040Z.csv")
-Feb_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-02.basic.20221211T154438Z.csv")
-Mar_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-03.basic.20221211T174515Z.csv")
-Apr_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-04.basic.20221211T160726Z.csv")
-May_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-05.basic.20221211T161346Z.csv")
-Jun_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-06.basic.20221211T154031Z.csv")
-Jul_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-07.basic.20221211T173141Z.csv")
-Aug_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-08.basic.20221211T180008Z.csv")
-Sep_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-09.basic.20221211T161826Z.csv")
-Oct_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-10.basic.20221211T163509Z.csv")
-Nov_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-11.basic.20221211T170748Z.csv")
-Dec_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-12.basic.20221211T172611Z.csv")
+Jan_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-01.basic.20221211T171040Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Feb_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-02.basic.20221211T154438Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Mar_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-03.basic.20221211T174515Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Apr_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-04.basic.20221211T160726Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+May_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-05.basic.20221211T161346Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Jun_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-06.basic.20221211T154031Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Jul_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-07.basic.20221211T173141Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Aug_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-08.basic.20221211T180008Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Sep_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-09.basic.20221211T161826Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Oct_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-10.basic.20221211T163509Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Nov_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-11.basic.20221211T170748Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
+Dec_2019_WQ <- read_csv("../Data/Raw/Water Quality Data/2019 SUGG water quality Neon Data sheets/NEON.D03.SUGG.DP1.20288.001.103.100.100.waq_instantaneous.2019-12.basic.20221211T172611Z.csv") %>%
+  mutate(chlorophyll_a = mean(chlorophyll))
 
 Jan_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-01.basic.20221128T184700Z.csv")
-Jan_2018_MC <- Jan_2018_M[-30]
+Jan_2018_MC <- Jan_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Feb_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-02.basic.20221128T162745Z.csv")
-Feb_2018_MC <- Feb_2018_M[-30]
+Feb_2018_MC <- Feb_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Mar_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-03.basic.20221128T190534Z.csv")
-Mar_2018_MC <- Mar_2018_M[-30]
+Mar_2018_MC <- Mar_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Apr_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-04.basic.20221128T172640Z.csv")
-Apr_2018_MC <- Apr_2018_M[-30]
+Apr_2018_MC <- Apr_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 May_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-05.basic.20221128T171839Z.csv")
-May_2018_MC <- May_2018_M[-30]
+May_2018_MC <- May_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Jun_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-06.basic.20221128T183715Z.csv")
-Jun_2018_MC <- Jun_2018_M[-30]
+Jun_2018_MC <- Jun_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Jul_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-07.basic.20221128T163521Z.csv")
-Jul_2018_MC <- Jul_2018_M[-30]
+Jul_2018_MC <- Jul_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Aug_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-08.basic.20221128T182901Z.csv")
-Aug_2018_MC <- Aug_2018_M[-30]
+Aug_2018_MC <- Aug_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Sep_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-09.basic.20221128T172709Z.csv")
-Sep_2018_MC <- Sep_2018_M[-30]
+Sep_2018_MC <- Sep_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Oct_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-10.basic.20221128T173108Z.csv")
-Oct_2018_MC <- Oct_2018_M[-30]
+Oct_2018_MC <- Oct_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Nov_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-11.basic.20221128T174938Z.csv")
-Nov_2018_MC <- Nov_2018_M[-30]
+Nov_2018_MC <- Nov_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Dec_2018_M <- read_csv("../Data/Raw/Mosquito Count Data/2018 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2018-12.basic.20221128T175440Z.csv")
-Dec_2018_MC <- Dec_2018_M[-30]
+Dec_2018_MC <- Dec_2018_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 
 Jan_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-01.basic.20221128T190654Z.csv")
-Jan_2019_MC <- Jan_2019_M[-30]
+Jan_2019_MC <- Jan_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Feb_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-02.basic.20221128T164754Z.csv")
-Feb_2019_MC <- Feb_2019_M[-30]
+Feb_2019_MC <- Feb_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Mar_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-03.basic.20221128T170843Z.csv")
-Mar_2019_MC <- Mar_2019_M[-30]
+Mar_2019_MC <- Mar_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Apr_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-04.basic.20221128T185950Z.csv")
-Apr_2019_MC <- Apr_2019_M[-30]
+Apr_2019_MC <- Apr_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 May_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-05.basic.20221128T165925Z.csv")
-May_2019_MC <- May_2019_M[-30]
+May_2019_MC <- May_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Jun_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-06.basic.20221128T172841Z.csv")
-Jun_2019_MC <- Jun_2019_M[-30]
+Jun_2019_MC <- Jun_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Jul_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-07.basic.20221128T180250Z.csv")
-Jul_2019_MC <- Jul_2019_M[-30]
+Jul_2019_MC <- Jul_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Aug_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-08.basic.20221128T180505Z.csv")
-Aug_2019_MC <- Aug_2019_M[-30]
+Aug_2019_MC <- Aug_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Sep_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-09.basic.20221128T163659Z.csv")
-Sep_2019_MC <- Sep_2019_M[-30]
+Sep_2019_MC <- Sep_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Oct_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-10.basic.20221128T193323Z.csv")
-Oct_2019_MC <- Oct_2019_M[-30]
+Oct_2019_MC <- Oct_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Nov_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-11.basic.20221128T163436Z.csv")
-Nov_2019_MC <- Nov_2019_M[-30]
+Nov_2019_MC <- Nov_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 Dec_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count Neon Data Sheets/NEON.D03.OSBS.DP1.10043.001.mos_expertTaxonomistIDProcessed.2019-12.basic.20221128T191152Z.csv")
-Dec_2019_MC <- Dec_2019_M[-30]
+Dec_2019_MC <- Dec_2019_M[-30] %>%
+  mutate(abundance=mean(individualCount))
 
 ```
 
 ``` {r merging files/variables}
 
 WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ) %>%
-  select(startDateTime,chlorophyll)
+  select(startDateTime,chlorophyll_a) 
 
 WQ_2019 <- bind_rows(Jan_2019_WQ,Feb_2019_WQ,Mar_2019_WQ,Apr_2019_WQ,May_2019_WQ,Jun_2019_WQ,Jul_2019_WQ,Aug_2019_WQ,Sep_2019_WQ,Oct_2019_WQ,Nov_2019_WQ,Dec_2019_WQ) %>%
-  select(startDateTime,chlorophyll)
+  select(startDateTime,chlorophyll_a)
 
-MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC)%>%
-  select(collectDate,individualCount)
+MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC) %>%
+  select(collectDate,abundance)
 
 MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC,Jun_2019_MC,Jul_2019_MC,Aug_2019_MC,Sep_2019_MC,Oct_2019_MC,Nov_2019_MC,Dec_2019_MC) %>%
-  select(collectDate,individualCount)
+  select(collectDate,abundance) 
 
 chlorophyll_mosquito_2018 <- cross_join(WQ_2018,MC_2018)
 
@@ -130,7 +179,6 @@ WQ_2018 %>%
 WQ_2019 %>%
   ggplot(aes(x=chlorophyll))+
   geom_histogram()
-
 
 MC_2018 %>%
   ggplot(aes(x=individualCount))+
