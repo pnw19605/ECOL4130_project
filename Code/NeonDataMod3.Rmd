@@ -98,6 +98,7 @@ Dec_2019_M <- read_csv("../Data/Raw/Mosquito Count Data/2019 OSBS Mosquito Count
 Dec_2019_MC <- Dec_2019_M[-30]
 
 ```
+
 ``` {r merging files/variables}
 
 WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ) %>%
@@ -119,3 +120,24 @@ chlorophyll_mosquito_2019 <- cross_join(WQ_2019,MC_2019)
 chlorophyll_mosquito_all <- cross_join(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
 
 ```
+
+``` {r histograms}
+
+WQ_2018 %>%
+  ggplot(aes(x=chlorophyll))+
+  geom_histogram()
+
+WQ_2019 %>%
+  ggplot(aes(x=chlorophyll))+
+  geom_histogram()
+
+
+MC_2018 %>%
+  ggplot(aes(x=individualCount))+
+  geom_histogram()
+
+MC_2019 %>%
+  ggplot(aes(x=individualCount))+
+  geom_histogram()
+
+``` 
