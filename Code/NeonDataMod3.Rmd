@@ -153,30 +153,32 @@ Dec_2019_MC <- Dec_2019_M[-30] %>%
 WQ_2018 <- bind_rows(Jan_2018_WQ,Feb_2018_WQ,Mar_2018_WQ,Apr_2018_WQ,May_2018_WQ,Jun_2018_WQ,Jul_2018_WQ,Aug_2018_WQ,Sep_2018_WQ,Oct_2018_WQ,Nov_2018_WQ,Dec_2018_WQ) %>%
   drop_na(chlorophyll) %>%
   group_by(month)%>%
-  summarise(chlorophyll_a=mean(chlorophyll))
-  
+  summarise(chlorophyll_a=mean(chlorophyll)) %>%
+  mutate(year=2018)
+
 WQ_2019 <- bind_rows(Jan_2019_WQ,Feb_2019_WQ,Mar_2019_WQ,Apr_2019_WQ,May_2019_WQ,Jun_2019_WQ,Jul_2019_WQ,Aug_2019_WQ,Sep_2019_WQ,Oct_2019_WQ,Nov_2019_WQ,Dec_2019_WQ) %>%
   drop_na(chlorophyll) %>%
   group_by(month)%>%
-  summarise(chlorophyll_a=mean(chlorophyll))
+  summarise(chlorophyll_a=mean(chlorophyll)) %>%
+  mutate(year=2019) 
 
 MC_2018 <- bind_rows(Jan_2018_MC,Feb_2018_MC,Mar_2018_MC,Apr_2018_MC,May_2018_MC,Jun_2018_MC,Jul_2018_MC,Aug_2018_MC,Sep_2018_MC,Oct_2018_MC,Nov_2018_MC,Dec_2018_MC) %>%
   drop_na(individualCount) %>%
   group_by(month)%>%
-  summarise(abundance=mean(individualCount))
+  summarise(abundance=mean(individualCount)) %>%
+  mutate(year=2018) 
 
 MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC,Jun_2019_MC,Jul_2019_MC,Aug_2019_MC,Sep_2019_MC,Oct_2019_MC,Nov_2019_MC,Dec_2019_MC) %>%
   drop_na(individualCount) %>%
   group_by(month)%>%
-  summarise(abundance=mean(individualCount))
+  summarise(abundance=mean(individualCount)) %>%
+  mutate(year=2019) 
 
-chlorophyll_mosquito_2018 <- left_join(WQ_2018,MC_2018) %>%
-  mutate(year = )
+chlorophyll_mosquito_2018 <- left_join(WQ_2018,MC_2018) 
 
-chlorophyll_mosquito_2019 <- left_join(WQ_2019,MC_2019) %>%
-  mutate(year = )
-
-chlorophyll_mosquito_all <- left_join(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
+chlorophyll_mosquito_2019 <- left_join(WQ_2019,MC_2019) 
+  
+chlorophyll_mosquito_all <- bind_rows(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
 
 ```
 
