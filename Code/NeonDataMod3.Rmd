@@ -170,7 +170,7 @@ MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC
   group_by(month)%>%
   summarise(abundance=mean(individualCount))
 
-chlorophyll_mosquito_2018 <- cross_join(WQ_2018,MC_2018)
+chlorophyll_mosquito_2018 <- cross_join(WQ_2018,MC_2018) 
 
 chlorophyll_mosquito_2019 <- cross_join(WQ_2019,MC_2019) 
 
