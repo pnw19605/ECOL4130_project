@@ -170,11 +170,13 @@ MC_2019 <- bind_rows(Jan_2019_MC,Feb_2019_MC,Mar_2019_MC,Apr_2019_MC,May_2019_MC
   group_by(month)%>%
   summarise(abundance=mean(individualCount))
 
-chlorophyll_mosquito_2018 <- cross_join(WQ_2018,MC_2018) 
+chlorophyll_mosquito_2018 <- left_join(WQ_2018,MC_2018) %>%
+  mutate(year = )
 
-chlorophyll_mosquito_2019 <- cross_join(WQ_2019,MC_2019) 
+chlorophyll_mosquito_2019 <- left_join(WQ_2019,MC_2019) %>%
+  mutate(year = )
 
-chlorophyll_mosquito_all <- cross_join(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
+chlorophyll_mosquito_all <- left_join(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
 
 ```
 
@@ -185,7 +187,7 @@ WQ_2018 %>%
   geom_histogram()
 
 WQ_2019 %>%
-  ggplot(aes(x=chlorophyll_a)+
+  ggplot(aes(x=chlorophyll_a))+
   geom_histogram()
 
 MC_2018 %>%
