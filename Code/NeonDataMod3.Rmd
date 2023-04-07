@@ -222,6 +222,7 @@ chlorophyll_mosquito_all %>%
   geom_smooth(method = "lm", color= "purple")
 
 ```
+#Figure 1 cpation:This scatterplot shows the combined data for both years 2018-2019. There is a slightly negative correlation between mosquito abundance and chlorophyll-a concentration. When chlorophyll-a increases, mosquito abundance tends to decrease.
 
 ```{r stats}
 model18<- lm(chlorophyll_a ~ mosquito_abundance, data=chlorophyll_mosquito_2018)
