@@ -178,8 +178,8 @@ chlorophyll_mosquito_2018 <- left_join(WQ_2018,MC_2018)
 
 chlorophyll_mosquito_2019 <- left_join(WQ_2019,MC_2019) 
   
-chlorophyll_mosquito_all <- bind_rows(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019)
-
+chlorophyll_mosquito_all <- bind_rows(chlorophyll_mosquito_2018,chlorophyll_mosquito_2019) %>% 
+  mutate(year=factor(year))
 ```
 
 ``` {r histograms}
@@ -234,4 +234,20 @@ summary(model19)
 modelall<- lm(chlorophyll_a ~ mosquito_abundance, data=chlorophyll_mosquito_all)
 summary(modelall)
 
+```
+
+
+```{r}
+chlorophyll_mosquito_all %>%
+ggplot(aes(x=month, y=chlorophyll_a, color=year))+
+geom_point()+
+theme_classic()
+```
+
+
+```{r}
+chlorophyll_mosquito_all %>%
+ggplot(aes(x=month, y=mosquito_abundance, color=year))+
+geom_point()+
+theme_classic()
 ```
