@@ -201,3 +201,36 @@ MC_2019 %>%
   geom_histogram()
 
 ``` 
+
+```{r scatterplots}
+chlorophyll_mosquito_2018 %>%
+  drop_na%>%
+  ggplot(aes(x=chlorophyll_a, y= mosquito_abundance))+
+  geom_point()+
+  geom_smooth(method ="lm", color = "green")
+
+chlorophyll_mosquito_2019 %>%
+  drop_na%>%
+  ggplot(aes(x=chlorophyll_a, y= mosquito_abundance))+
+  geom_point()+
+  geom_smooth(method ="lm", color = "blue")
+
+chlorophyll_mosquito_all %>%
+  drop_na()%>%
+  ggplot(aes(x=chlorophyll_a, y=mosquito_abundance))+
+  geom_point()+
+  geom_smooth(method = "lm", color= "purple")
+
+```
+
+```{r stats}
+model18<- lm(chlorophyll_a ~ mosquito_abundance, data=chlorophyll_mosquito_2018)
+summary(model18)
+
+model19<- lm(chlorophyll_a ~ mosquito_abundance, data= chlorophyll_mosquito_2019)
+summary(model19)
+
+modelall<- lm(chlorophyll_a ~ mosquito_abundance, data=chlorophyll_mosquito_all)
+summary(modelall)
+
+```
