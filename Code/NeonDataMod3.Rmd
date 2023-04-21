@@ -205,21 +205,29 @@ MC_2019 %>%
 ```{r scatterplots}
 chlorophyll_mosquito_2018 %>%
   drop_na%>%
-  ggplot(aes(x=chlorophyll_a, y= mosquito_abundance))+
+  rename(`Mosquito Abundance`=mosquito_abundance)%>%
+  rename(`Chlorophyll A (mg/L)`=chlorophyll_a)%>%
+  ggplot(aes(x=`Chlorophyll A (mg/L)`, y= `Mosquito Abundance`))+
   geom_point()+
   geom_smooth(method ="lm", color = "green")
 
 chlorophyll_mosquito_2019 %>%
   drop_na%>%
-  ggplot(aes(x=chlorophyll_a, y= mosquito_abundance))+
+  rename(`Mosquito Abundance`=mosquito_abundance)%>%
+  rename(`Chlorophyll A (mg/L)`=chlorophyll_a)%>%
+  ggplot(aes(x=`Chlorophyll A (mg/L)`, y= `Mosquito Abundance`))+
   geom_point()+
   geom_smooth(method ="lm", color = "blue")
 
 chlorophyll_mosquito_all %>%
   drop_na()%>%
-  ggplot(aes(x=chlorophyll_a, y=mosquito_abundance))+
+  rename(`Mosquito Abundance`=mosquito_abundance)%>%
+  rename(`Chlorophyll A (mg/L)`=chlorophyll_a)%>%
+  ggplot(aes(x=`Chlorophyll A (mg/L)`, y= `Mosquito Abundance`))+
   geom_point()+
-  geom_smooth(method = "lm", color= "purple")
+  geom_smooth(method = "lm", color= "purple")+
+  ggtitle("Effect of Chlorophyll A levels on Mosquito Abundance")+
+  theme(plot.title=element_text(hjust=0.5))
 
 ```
 Figure 1: Scatter plot showing the combined data of chlorophyll-A concentration and mosquito abundance for 2018 and 2019. There is a slightly negative correlation between mosquito abundance and chlorophyll-a concentration.
@@ -242,17 +250,29 @@ The higher p-value for the "all data" set suggests that there is no significance
 
 ```{r}
 chlorophyll_mosquito_all %>%
-ggplot(aes(x=month, y=chlorophyll_a, color=year))+
-geom_point()+
-theme_classic()
+  rename(`Chlorophyll A (mg/L)`=chlorophyll_a)%>%
+  rename(Month=month)%>%
+  ggplot(aes(x=Month, y=`Chlorophyll A (mg/L)`, color=year))+
+  geom_point()+
+  theme_classic()+
+  ggtitle("Chlorophyll A Concentration by Month")+
+  theme(plot.title=element_text(hjust=0.5))
+
 ```
 Figure 2: Point plot representing chlorophyll-a concentration over time (in months) for both the years 2018 (orange) and 2019 (blue). Chlorophyll-a concentrations in 2019 appear to be lower in all months than 2018.
 
 ```{r}
-chlorophyll_mosquito_all %>% 
-ggplot(aes(x=month, y=mosquito_abundance, color=year))+
-geom_point()+
-theme_classic()
+chlorophyll_mosquito_all %>%
+  rename(`Mosquito Abundance`=mosquito_abundance)%>%
+  rename(Month=month)%>%
+  mutate(Month = ordered(Month))%>%
+  ggplot(aes(x=Month, y=`Mosquito Abundance`, color=year))+
+  geom_point()+
+  geom_line()+
+  theme_classic()+
+  ggtitle("Mosquito Abundance Concentration by Month")+
+  theme(plot.title=element_text(hjust=0.5))
+
 ```
 
 Figure 3: Point plot representing the mosquito abundance over time (in months) for both the years 2018 (orange) and 2019 (blue). No apparent pattern can be seen.
