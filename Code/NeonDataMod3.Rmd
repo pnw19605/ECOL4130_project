@@ -252,8 +252,9 @@ The higher p-value for the "all data" set suggests that there is no significance
 chlorophyll_mosquito_all %>%
   rename(`Chlorophyll A (mg/L)`=chlorophyll_a)%>%
   rename(Month=month)%>%
-  ggplot(aes(x=Month, y=`Chlorophyll A (mg/L)`, color=year))+
+  ggplot(aes(x=Month, y=`Chlorophyll A (mg/L)`, color=year, group=year))+
   geom_point()+
+  geom_line()+
   theme_classic()+
   ggtitle("Chlorophyll A Concentration by Month")+
   theme(plot.title=element_text(hjust=0.5))
@@ -266,7 +267,7 @@ chlorophyll_mosquito_all %>%
   rename(`Mosquito Abundance`=mosquito_abundance)%>%
   rename(Month=month)%>%
   mutate(Month = ordered(Month))%>%
-  ggplot(aes(x=Month, y=`Mosquito Abundance`, color=year))+
+  ggplot(aes(x=Month, y=`Mosquito Abundance`, color=year, group=year))+
   geom_point()+
   geom_line()+
   theme_classic()+
